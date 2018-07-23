@@ -1,0 +1,69 @@
+{
+	"list": [{
+			"route": "postTest",
+			"name":"testPost",
+			"method": "POST",
+			"headers": {
+				"Content-Type": "application/json",
+				"Accept": "application/json"
+			},
+			"parameters": {},
+			"request_body": {
+				"id": "int",
+				"name": "string",
+				"time": "date"
+			},
+			"required":["id","name"]
+			"response_body": {
+				"name":"postres",
+				"fields":{
+					"status": "string",
+					"message": "string",
+					"traceId": "string"
+				}
+			}
+		},
+		{
+			"route": "getTest",
+			"name":"getTest",
+			"method": "GET",
+			"headers": {
+				"Authorization": "token"
+			},
+			"path": {
+				"id": "int",
+				"name": "string"
+			},
+			"parameters": {},
+			"response_body": {
+				"name":"getres",
+				"fields":{
+					"status": "string",
+					"message": "string",
+					"traceId": "string"
+				}
+			}
+		},
+		{
+			"route": "getandpostTest",
+			"name":"getTest",
+			"method": "GET",
+			"headers": {
+				"Authorization": "token"
+			},
+			"path": {
+				"id": "int",
+				"name": "string"
+			},
+			"parameters": {},
+			"response_body": {
+				"name":"getandpostres",
+				"fields":{
+					"status": "string",
+					"message": "string",
+					"traceId": "string"
+				}
+			}
+		}
+	]
+}
