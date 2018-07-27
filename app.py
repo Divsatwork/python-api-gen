@@ -24,7 +24,9 @@ class controller:
     def POST(self):
         x = json.loads(web.data())
         filer = fileutil.fileUtil()
-        filer.createControllerFile('final.py', r'C:\Users\Divyansh\Desktop', x['list'])
+        if x['location'] == None or (unicode!=type(x['location'])):
+            raise ValueError("Please provide a valid path")
+        filer.createControllerFile('final.py', x['location'], x['list'])
         # print x['list']
         del filer
         return "ok"

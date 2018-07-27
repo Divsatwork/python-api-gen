@@ -22,11 +22,23 @@ class fileUtil:
     def checkDir(self, dirLocation):
         if dirLocation is None:
             raise ValueError('Provided directory location is not valid')
-        return os.path.isdir(dirLocation)
+        if unicode != type(dirLocation):
+            raise ValueError('Provided directory location is not valid')
+        if os.path.isdir(dirLocation):
+            pass
+        else:
+            self.makeDir(dirLocation)
+
+    def makeDir(self, dirLocation):
+        if dirLocation is None:
+            raise ValueError('No valid dir location provided')
+        os.mkdir(dirLocation)
 
     def createControllerFile(self, filename, fileLocation, apis=[]):
         if self.checkFile(filename,fileLocation):
-            raise ValueError('Already existing controller exists')
+            # raise ValueError('Already existing controller exists')
+            pass
+        self.checkDir(fileLocation)
         self.createFile(filename, fileLocation) #File created
         if apis is None or apis == []:
             raise ValueError('No API provided to be written in the controller')
@@ -66,13 +78,13 @@ class fileUtil:
             fp.write(flask_snippets.FLASK_API_ROUTE_HEADER % route)
             fp.write(flask_snippets.FLASK_DEF_DECLARATION %(apiDetail['name'], method_params))
             if apiDetail['response_body'] == {} or apiDetail['response_body'] is None:
-                fp.write(flask_snippets.FLASK_DEF_BODY_WITHOUT_RESPONSE % method_params)
+                fp.write(flask_snippets.FLASK_DEF_BODY_WITHOUT_RESPONSE)
             else:
                 #Write code to write the class with all the fields for response body and also
-                #create an __init__ file so that the file can be imported
-                # fp.write(flask_snippets.FLASK_DEF_BODY % 's')
+                #create an __init__ file so that the file can be imported.
                 cfilename = apiDetail['response_body']['name']+'.py'
-                cf = open(os.path.join(fileLocation,cfilename), 'w')
+                self.checkDir(os.path.join(fileLocation,'responses'))
+                cf = open(os.path.join((os.path.join(fileLocation,'responses')),cfilename), 'w')
                 cf.write(flask_snippets.FLASK_CLASS_DECLARATION % apiDetail['response_body']['name'])
                 cf.write(flask_snippets.FLASK_CLASS_INIT_DEF)
                 for response_param in apiDetail['response_body']['fields']:
@@ -87,8 +99,8 @@ class fileUtil:
                     else:
                         cf.write(flask_snippets.FLASK_CLASS_INIT_SELF_STRING % response_param)
                 cf.close()
-                self.createFile('__init__.py', fileLocation)
-                fp.write(flask_snippets.FLASK_CLASS_INIT_IMPORT_SNIPPET % apiDetail['response_body']['name'])
+                self.createFile('__init__.py', os.path.join(fileLocation,'responses'))
+                fp.write(flask_snippets.FLASK_CLASS_INIT_IMPORT_SNIPPET.format(class_name=str(apiDetail['response_body']['name'])))
                 fp.write(flask_snippets.FLASK_DEF_BODY_WITH_RESPONSE % (str(apiDetail['response_body']['name'])+'.'+ str(apiDetail['response_body']['name'])))
                 fp.close()
 

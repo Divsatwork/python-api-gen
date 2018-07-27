@@ -7,7 +7,7 @@ app = Flask(__name__)'''
 FLASK_API_ROUTE_HEADER = '''\n\n@app.route("/%s")''' #replace %s with the route
 FLASK_DEF_DECLARATION = ''' \ndef %s(%s):''' #replace the function name and the function parameters
 FLASK_DEF_BODY_WITH_RESPONSE = '''\n\t#Write logic here\n\treturn json.dumps(%s().__dict__)''' #%s to replace response class name
-FLASK_DEF_BODY_WITHOUT_RESPONSE = '''\n\t#Write logic here\n\treturn %s'''
+FLASK_DEF_BODY_WITHOUT_RESPONSE = '''\n\t#Write logic here\n\tpass'''
 
 #Path variables. Here %s replaces with the variable name.
 FLASK_PATH_VAR_INT = '/<int:%s>'
@@ -23,7 +23,10 @@ FLASK_CLASS_INIT_SELF_STRING = '''\n\t\tself.%s = ""'''
 FLASK_CLASS_INIT_SELF_DATE = '''\n\t\tself.%s = ""'''
 FLASK_CLASS_INIT_SELF_LIST = '''\n\t\tself.%s = []'''
 FLASK_CLASS_INIT_SELF_DICT = '''\n\t\tself.%s = {}'''
-FLASK_CLASS_INIT_IMPORT_SNIPPET = '''\n\timport %s'''
+FLASK_CLASS_INIT_IMPORT_SNIPPET = '''\n\timport responses.{class_name} as {class_name}'''
+
+#Request Parametrs and its validation
+FLASK_DEF_BODY_REQ_PARAM_REQUIRED = '''\n\tassert request.args.get("%s") != None'''
 
 
 

@@ -1,0 +1,82 @@
+{
+	"list": [{
+		"route": "getTest",
+		"name": "getTestwithIdAndName",
+		"method": "GET",
+		"headers": {
+			"Authorization": "token"
+		},
+		"path": {
+			"id": "int",
+			"name": "string"
+		},
+		"parameters": {},
+		"response_body": {
+			"name": "getreswithIdandName",
+			"fields": {
+				"status": "",
+				"message": "",
+				"traceId": "",
+				"id": 0,
+				"lists": []
+			}
+		}
+	},
+	{
+		"route": "getTest",
+		"name": "getTest",
+		"method": "GET",
+		"headers": {
+			"Authorization": "token"
+		},
+		"path": {
+		},
+		"parameters": {},
+		"response_body": {
+			"name": "getres",
+			"fields": {
+				"status": "",
+				"details":{},
+				"id": 0
+			}
+		}
+	},
+	{
+		"route": "getTestwoResponse",
+		"name": "getTestwithoutresponse",
+		"method": "GET",
+		"headers": {
+			"Authorization": "token"
+		},
+		"path": {
+		},
+		"parameters": {},
+		"response_body": {
+			
+		}
+	},
+	{
+		"route": "getTestwithParam",
+		"name": "getTestwithoutresponse",
+		"method": "GET",
+		"headers": {
+			"Authorization": "token"
+		},
+		"path": {
+		},
+		"parameters": {
+			"name":{
+			"type":"int",
+			"required":true
+			},
+			"id":{
+			"type":"string",
+			"required":false
+			}
+		},
+		"response_body": {
+			
+		}
+	}],
+	"location":"C:\\Users\\Divyansh\\Desktop"
+}
