@@ -4,7 +4,10 @@ FLASK_HEADER = '''from flask import Flask,request
 import json
 app = Flask(__name__)'''
 
-FLASK_API_ROUTE_HEADER = '''\n\n@app.route("/%s")''' #replace %s with the route
+FLASK_FOOTER = '\n\n\napp.run()'
+
+FLASK_API_GET_ROUTE_HEADER = '''\n\n@app.route("/%s")''' #replace %s with the route
+FLASK_API_POST_ROUTE_HEADER = '''\n\n@app.route("/%s", methods=['POST'])''' #replace %s with the route
 FLASK_DEF_DECLARATION = ''' \ndef %s(%s):''' #replace the function name and the function parameters
 FLASK_DEF_BODY_WITH_RESPONSE = '''\n\t#Write logic here\n\treturn json.dumps(%s().__dict__)''' #%s to replace response class name
 FLASK_DEF_BODY_WITHOUT_RESPONSE = '''\n\t#Write logic here\n\tpass'''
@@ -27,6 +30,8 @@ FLASK_CLASS_INIT_IMPORT_SNIPPET = '''\n\timport responses.{class_name} as {class
 
 #Request Parametrs and its validation
 FLASK_DEF_BODY_REQ_PARAM_REQUIRED = '''\n\tassert request.args.get("%s") != None'''
+FLASK_DEF_BODY_REQ_PARAM_REQUIRED_TYPE = '''\n\tassert type(request.args.get("%s")) != %s'''
+FLASK_DEF_BODY_REQ_PARAM_NOT_REQUIRED = '''\n\t#assert request.args.get("%s") != None'''
 
 
 

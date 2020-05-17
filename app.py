@@ -26,7 +26,9 @@ class controller:
         filer = fileUtil.fileUtil()
         if x['location'] == None or (str!=type(x['location'])):
             raise ValueError("Please provide a valid path")
-        filer.createControllerFile('final.py', x['location'], x['list'])
+        if x['controllerFileName'] is None or type(x['controllerFileName']) is not str:
+            raise ValueError("Please provide a valid file name for the controller")
+        filer.createControllerFile(x['controllerFileName'], x['location'], x['list'])
         # print x['list']
         del filer
         return "ok"

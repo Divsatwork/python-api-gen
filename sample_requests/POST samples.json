@@ -1,8 +1,8 @@
 {
 	"list": [{
-		"route": "getTest",
-		"name": "getTestwithIdAndName",
-		"method": "GET",
+		"route": "postTest",
+		"name": "postTestwithIdAndName",
+		"method": "POST",
 		"headers": {
 			"Authorization": "token"
 		},
@@ -12,7 +12,7 @@
 		},
 		"parameters": {},
 		"response_body": {
-			"name": "getreswithIdandName",
+			"name": "postreswithIdandName",
 			"fields": {
 				"status": "",
 				"message": "",
@@ -23,9 +23,9 @@
 		}
 	},
 	{
-		"route": "getTest",
-		"name": "getTest",
-		"method": "GET",
+		"route": "postTest",
+		"name": "postTest",
+		"method": "POST",
 		"headers": {
 			"Authorization": "token"
 		},
@@ -33,7 +33,7 @@
 		},
 		"parameters": {},
 		"response_body": {
-			"name": "getres",
+			"name": "postres",
 			"fields": {
 				"status": "",
 				"details":{},
@@ -42,9 +42,9 @@
 		}
 	},
 	{
-		"route": "getTestwoResponse",
-		"name": "getTestwithoutresponse",
-		"method": "GET",
+		"route": "postTestwoResponse",
+		"name": "postTestwithoutresponse",
+		"method": "POST",
 		"headers": {
 			"Authorization": "token"
 		},
@@ -56,9 +56,9 @@
 		}
 	},
 	{
-		"route": "getTestwithParam",
-		"name": "getTestwithoutresponse",
-		"method": "GET",
+		"route": "postTestwithParam",
+		"name": "postTestwithoutresponse1",
+		"method": "POST",
 		"headers": {
 			"Authorization": "token"
 		},
