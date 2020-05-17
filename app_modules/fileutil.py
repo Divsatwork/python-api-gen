@@ -1,5 +1,5 @@
 import os
-from snippets import flask_snippets
+from .snippets import flask_snippets
 
 class fileUtil:
 
@@ -22,7 +22,7 @@ class fileUtil:
     def checkDir(self, dirLocation):
         if dirLocation is None:
             raise ValueError('Provided directory location is not valid')
-        if unicode != type(dirLocation):
+        if str != type(dirLocation):
             raise ValueError('Provided directory location is not valid')
         if os.path.isdir(dirLocation):
             pass
@@ -73,7 +73,7 @@ class fileUtil:
                 method_params = method_params+str(i)+','
             else:
                 method_params = method_params[:-1]
-            print route
+            print (route)
         with open(os.path.join(fileLocation,filename), 'a') as fp:
             fp.write(flask_snippets.FLASK_API_ROUTE_HEADER % route)
             fp.write(flask_snippets.FLASK_DEF_DECLARATION %(apiDetail['name'], method_params))

@@ -1,5 +1,5 @@
 import web
-from app_modules import fileutil
+from app_modules import fileUtil
 import json
 
 #Our applications end points
@@ -23,8 +23,8 @@ class controller:
 
     def POST(self):
         x = json.loads(web.data())
-        filer = fileutil.fileUtil()
-        if x['location'] == None or (unicode!=type(x['location'])):
+        filer = fileUtil.fileUtil()
+        if x['location'] == None or (str!=type(x['location'])):
             raise ValueError("Please provide a valid path")
         filer.createControllerFile('final.py', x['location'], x['list'])
         # print x['list']
@@ -32,5 +32,5 @@ class controller:
         return "ok"
 
 if __name__ == "__main__":
-    print 'Starting server at port 8080'
+    print ('Starting server at port 8080')
     app.run()
